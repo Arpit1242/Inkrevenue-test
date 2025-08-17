@@ -1,0 +1,34 @@
+.service__img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transform: rotate(0deg) translateX(-100px);
+  transition: all 0.5s ease;
+  z-index: 0;
+}
+
+.service__img.active {
+  opacity: 1;
+  transform: rotate(15deg) translateX(60px) translateY(30px);
+  z-index: 10;
+}
+
+@media screen and (width: 1024px) {
+  .ipad-stack {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+
+  .ipad-title {
+    width: 100% !important;
+  }
+
+  .ipad-description {
+    width: 100% !important;
+  }
+
+  .ipad-arrow {
+    display: none !important;
+  }
+}

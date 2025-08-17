@@ -6,18 +6,28 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "export": "next export"
   },
   "dependencies": {
+    "framer-motion": "^12.23.6",
+    "gsap": "^3.13.0",
+    "lucide-react": "^0.525.0",
+    "next": "15.4.1",
     "react": "19.1.0",
+    "react-countup": "^6.5.3",
     "react-dom": "19.1.0",
-    "next": "15.4.1"
+    "react-icons": "^5.5.0",
+    "react-intersection-observer": "^9.16.0",
+    "react-whatsapp-widget": "^2.2.0",
+    "swiper": "^11.2.10",
+    "three": "^0.178.0"
   },
   "devDependencies": {
+    "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
-    "tailwindcss": "^4",
     "eslint": "^9",
     "eslint-config-next": "15.4.1",
-    "@eslint/eslintrc": "^3"
+    "tailwindcss": "^4"
   }
 }

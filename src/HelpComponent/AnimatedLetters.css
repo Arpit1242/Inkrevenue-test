@@ -1,0 +1,30 @@
+.letter-wrapper {
+  display: inline-flex;
+  perspective: 1000px;
+  gap: 2px;
+}
+
+.letter {
+  display: inline-block;
+  transform-style: preserve-3d;
+  transition: transform 1s ease, color 0.4s ease, text-shadow 0.4s ease;
+  backface-visibility: hidden;
+  will-change: transform, color;
+  position: relative;
+}
+
+/* Light mode (default) */
+:root .letter {
+  color: #00308F; /* dark gray */
+}
+
+/* Dark mode override */
+.dark .letter {
+  color: var(--text-color); /* white */
+}
+
+.letter-wrapper.hovered .letter {
+  transform: rotateX(360deg);
+  color: var(--link-color);
+  text-shadow: 0 0 6px rgba(0, 170, 255, 0.6);
+}
