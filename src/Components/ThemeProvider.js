@@ -7,10 +7,10 @@ const ThemeContext = createContext();
 export const useTheme = () => useContext(ThemeContext);
 
 export const ThemeProvider = ({ children }) => {
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState("dark"); // 👈 default dark
 
   useEffect(() => {
-    const storedTheme = localStorage.getItem("theme") || "light";
+    const storedTheme = localStorage.getItem("theme") || "dark"; // 👈 fallback to dark
     setTheme(storedTheme);
     document.documentElement.classList.add(storedTheme);
   }, []);
