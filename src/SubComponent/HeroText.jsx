@@ -93,7 +93,7 @@ const { theme } = useTheme();
       >
         <button
           onClick={handleClick}
-          className=" hover:bg-blue-600 text-white font-medium px-6 py-3 rounded-full shadow-lg transition duration-300"
+          className=" hover:bg-blue-600 text-white font-medium px-6 py-3 rounded-full shadow-lg transition duration-300 cursor-pointer"
           style={{backgroundColor : "var(--bg-main3)"}}  >
           Let's Connect
         </button>

@@ -24,43 +24,40 @@ const page = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+const handleSubmit = async (e) => {
+  e.preventDefault();
 
-    const scriptURL =
-      "https://script.google.com/macros/s/AKfycbxiwOtFKW-jkBnKzXq10qZLnMcXvKsUS2Ki60JjLU2rn1bMvYaEH6QWEO3meDkFccgo8w/exec";
+  const scriptURL =
+    "https://script.google.com/macros/s/AKfycbzkUXB0m557HBuFweM2o612fVuIPxomXBGeCqCobysgV0mckcj_hvF1sNRl0yI3EVlY/exec";
 
-    try {
-      const res = await fetch(scriptURL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
+  try {
+    const form = new FormData();
+    Object.entries(formData).forEach(([key, value]) => {
+      form.append(key, value);
+    });
 
-      const text = await res.text(); // Don't assume JSON yet
+    const res = await fetch(scriptURL, {
+      method: "POST",
+      body: form, // <-- no headers needed
+    });
 
-      // Try parsing response
-      const result = JSON.parse(text);
+    const text = await res.text();
+    console.log("Response:", text);
 
-      if (result.result === "success") {
-        alert("Form submitted successfully!");
-        setFormData({
-          name: "",
-          email: "",
-          subject: "",
-          contact: "",
-          service: "",
-          message: "",
-        });
-      } else {
-        console.error("Server returned error:", result);
-        alert("Something went wrong: " + (result.message || "Unknown error"));
-      }
-    } catch (error) {
-      console.error("Submission error:", error);
-      alert("Submission failed. Check console for details.");
-    }
-  };
+    //alert("Form submitted successfully!");
+    setFormData({
+      name: "",
+      email: "",
+      subject: "",
+      contact: "",
+      service: "",
+      message: "",
+    });
+  } catch (error) {
+    console.error("Submission error:", error);
+    alert("Submission failed. Check console for details.");
+  }
+};
 
   return (
     <section
