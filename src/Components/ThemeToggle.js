@@ -25,14 +25,14 @@ export default function ThemeToggle() {
         repeat: Infinity,
         repeatType: "mirror",
       }}
-      className={`fixed top-[750px] md:top-1/2 right-7 -translate-y-1/2 z-50 
-        px-3 py-1.5 text-sm sm:px-4 sm:py-2 sm:text-base 
-        rounded-full font-medium border border-blue-500 shadow-lg
-        ${
-          theme === "light"
-            ? "bg-white text-black hover:bg-gray-100"
-            : "bg-[#1f1f1f] text-white hover:bg-[#2a2a2a]"
-        }`}
+      className={`fixed bottom-30 right-6 z-50
+  px-4 py-2.5 text-sm sm:px-4 sm:py-2 sm:text-base 
+  rounded-full font-medium border border-blue-500 shadow-lg
+  ${
+    theme === "light"
+      ? "bg-white text-black hover:bg-gray-100"
+      : "bg-[#1f1f1f] text-white hover:bg-[#2a2a2a]"
+  }`}
     >
       <AnimatePresence mode="wait" initial={false}>
         <motion.span
