@@ -26,7 +26,7 @@ export const team = [
     position: "Business development Manager",
   },
   {
-    image: "/img/team/depaanshi.jpg",
+    image: "/img/team/Depaanshi.jpg",
     position: "Client Relationship Manager",
   },
   {
