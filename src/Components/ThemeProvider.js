@@ -7,13 +7,14 @@ const ThemeContext = createContext();
 export const useTheme = () => useContext(ThemeContext);
 
 export const ThemeProvider = ({ children }) => {
-  const [theme, setTheme] = useState("light");
+  // 👇 Default is "dark"
+  const [theme, setTheme] = useState("dark");
 
   // Load from localStorage on mount
   useEffect(() => {
     const storedTheme = localStorage.getItem("theme");
     if (storedTheme) {
-      setTheme(storedTheme);
+      setTheme(storedTheme); // use saved theme if available
     }
   }, []);
 
