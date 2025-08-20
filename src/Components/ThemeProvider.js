@@ -1,26 +1,33 @@
 "use client";
 
-import { createContext, useContext, useEffect, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 
 const ThemeContext = createContext();
 
 export const useTheme = () => useContext(ThemeContext);
 
 export const ThemeProvider = ({ children }) => {
-  const [theme, setTheme] = useState("dark"); // 👈 default dark
+  const [theme, setTheme] = useState("light");
 
+  // Load from localStorage on mount
   useEffect(() => {
-    const storedTheme = localStorage.getItem("theme") || "dark"; // 👈 fallback to dark
-    setTheme(storedTheme);
-    document.documentElement.classList.add(storedTheme);
+    const storedTheme = localStorage.getItem("theme");
+    if (storedTheme) {
+      setTheme(storedTheme);
+    }
   }, []);
 
+  // Apply theme to <html> + save in localStorage
+  useEffect(() => {
+    if (theme) {
+      document.documentElement.classList.remove("light", "dark");
+      document.documentElement.classList.add(theme);
+      localStorage.setItem("theme", theme);
+    }
+  }, [theme]);
+
   const toggleTheme = () => {
-    const newTheme = theme === "light" ? "dark" : "light";
-    document.documentElement.classList.remove(theme);
-    document.documentElement.classList.add(newTheme);
-    localStorage.setItem("theme", newTheme);
-    setTheme(newTheme);
+    setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
   };
 
   return (

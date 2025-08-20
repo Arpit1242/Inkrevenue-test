@@ -5,7 +5,7 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 import CursorTrail from "../HelpComponent/CursorTrail";
 import WhatsAppButton from "@/app/Whatsapp/page";
-
+import ThemeToggle from "./ThemeToggle";  
 export default function ClientWrapper({ children }) {
   return (
     <ThemeProvider>
@@ -13,6 +13,7 @@ export default function ClientWrapper({ children }) {
       <Navbar />
       {children}
       <WhatsAppButton />
+      <ThemeToggle /> {/* floating theme switch */}
       <Footer />
     </ThemeProvider>
   );

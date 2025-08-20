@@ -74,9 +74,6 @@ const Navbar = () => {
               </Link>
             </li>
           ))}
-          <li>
-            <ThemeToggle />
-          </li>
         </ul>
 
         {/* Hamburger */}
@@ -127,9 +124,6 @@ const Navbar = () => {
               </Link>
             </li>
           ))}
-          <li>
-            <ThemeToggle />
-          </li>
         </ul>
       )}
     </nav>
