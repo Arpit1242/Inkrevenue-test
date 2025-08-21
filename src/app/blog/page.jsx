@@ -55,15 +55,16 @@ const BlogSection = () => {
 
   return (
     <>
-      <div className="relative w-full min-h-[100vh]  overflow-x-hidden lg:mt-15" style={{
+      <div className="relative w-full min-h-[100vh]  overflow-x-hidden lg:mt-15">
+        {/* 🔹 Mobile & Tablet View */}
+        <div className="block md:hidden px-4 py-8 text-white pt-20 md:pt-0"
+        style={{
     backgroundColor: "var(--bg-color)",
     color: "var(--text-color)"
-  }}>
-        {/* 🔹 Mobile & Tablet View */}
-        <div className="block md:hidden px-4 py-8 text-white pt-20 md:pt-0">  
+  }}>  
           <div className="text-center mb-8">
             <h2 className="text-lg text-gray-400 tracking-widest">OUR BLOGS</h2>
-            <h1 className="text-3xl font-extrabold mb-2 text-gray-400">
+            <h1 className="text-3xl font-extrabold mb-2">
               Inside <span className="text-blue-500">Ink</span>Revenue
             </h1>
             <p className="text-gray-400 text-sm">
@@ -79,7 +80,7 @@ const BlogSection = () => {
                   alt={blog.title}
                   className="w-full h-48 object-cover rounded-md mb-4"
                 />
-                <h3 className="text-xl font-bold mb-1">{blog.title}</h3>
+                <h3 className="text-xl font-bold mb-1 text-blue-500">{blog.title}</h3>
                 <p className="text-xs text-gray-400 mb-2">{blog.date}</p>
                 <p className="text-gray-300 mb-3">{blog.content}</p>
                 <Link href={blog.path} className="text-blue-400 underline text-sm">
