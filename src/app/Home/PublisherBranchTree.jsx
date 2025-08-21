@@ -115,7 +115,10 @@ export default function PublisherBranchTree() {
       </div>
 
       {/* Mobile + Tablet View */}
-      <div className="lg:hidden w-full bg-black py-12 px-4 flex flex-col items-center gap-6">
+      <div className="lg:hidden w-full bg-black py-12 px-4 flex flex-col items-center gap-6" style={{
+          backgroundColor: "var(--bg-color)",
+          color: "var(--text-color)",
+        }}>
         <div className="bg-[#171717] shadow-xl p-6 rounded-xl text-center border-2 border-blue-400 w-[90%]">
           <h2 className="text-3xl font-bold text-blue-600">Publishers</h2>
           <p className="text-md text-white mt-2">
