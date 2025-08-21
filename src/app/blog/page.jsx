@@ -63,7 +63,7 @@ const BlogSection = () => {
         <div className="block md:hidden px-4 py-8 text-white pt-20 md:pt-0">  
           <div className="text-center mb-8">
             <h2 className="text-lg text-gray-400 tracking-widest">OUR BLOGS</h2>
-            <h1 className="text-3xl font-extrabold mb-2">
+            <h1 className="text-3xl font-extrabold mb-2 text-gray-400">
               Inside <span className="text-blue-500">Ink</span>Revenue
             </h1>
             <p className="text-gray-400 text-sm">
