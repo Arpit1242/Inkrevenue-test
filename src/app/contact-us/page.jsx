@@ -9,6 +9,7 @@ import {
   FaClock,
 } from "react-icons/fa";
 import { contactInfo } from "@/data/Contactus/contactData";
+import SuccessPopup from "./SuccessPopUp";
 
 const page = () => {
   const [formData, setFormData] = useState({
@@ -20,44 +21,46 @@ const page = () => {
     message: "",
   });
 
+  const [showPopup, setShowPopup] = useState(false);
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-const handleSubmit = async (e) => {
-  e.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-  const scriptURL =
-    "https://script.google.com/macros/s/AKfycbzkUXB0m557HBuFweM2o612fVuIPxomXBGeCqCobysgV0mckcj_hvF1sNRl0yI3EVlY/exec";
+    const scriptURL =
+      "https://script.google.com/macros/s/AKfycbzkUXB0m557HBuFweM2o612fVuIPxomXBGeCqCobysgV0mckcj_hvF1sNRl0yI3EVlY/exec";
 
-  try {
-    const form = new FormData();
-    Object.entries(formData).forEach(([key, value]) => {
-      form.append(key, value);
-    });
+    try {
+      const form = new FormData();
+      Object.entries(formData).forEach(([key, value]) => {
+        form.append(key, value);
+      });
 
-    const res = await fetch(scriptURL, {
-      method: "POST",
-      body: form, // <-- no headers needed
-    });
+      const res = await fetch(scriptURL, {
+        method: "POST",
+        body: form, // <-- no headers needed
+      });
 
-    const text = await res.text();
-    console.log("Response:", text);
+      const text = await res.text();
+      console.log("Response:", text);
 
-    //alert("Form submitted successfully!");
-    setFormData({
-      name: "",
-      email: "",
-      subject: "",
-      contact: "",
-      service: "",
-      message: "",
-    });
-  } catch (error) {
-    console.error("Submission error:", error);
-    alert("Submission failed. Check console for details.");
-  }
-};
+      setFormData({
+        name: "",
+        email: "",
+        subject: "",
+        contact: "",
+        service: "",
+        message: "",
+      });
+      setShowPopup(true);
+    } catch (error) {
+      console.error("Submission error:", error);
+      alert("Submission failed. Check console for details.");
+    }
+  };
 
   return (
     <section
@@ -108,36 +111,46 @@ const handleSubmit = async (e) => {
           >
             {contactInfo.phones.map((phone, i) => (
               <p key={i} className="flex items-center gap-2">
-                <FaPhoneAlt className="text-blue-400" /> <span className="font-bold">
+                <FaPhoneAlt className="text-blue-400" />{" "}
+                <span className="font-bold">
                   Phone:{" "}
-                <a
-                  href={`tel:${phone.number.replace(/\s+/g, "")}`}
-                  className="hover:text-blue-400 transition"
-                >
-                 <span className="font-normal"> {phone.number}</span>
-                </a>
+                  <a
+                    href={`tel:${phone.number.replace(/\s+/g, "")}`}
+                    className="hover:text-blue-400 transition"
+                  >
+                    <span className="font-normal"> {phone.number}</span>
+                  </a>
                 </span>
               </p>
             ))}
             <p className="flex items-center gap-2">
-              <FaEnvelope className="text-blue-400" /><span className="font-bold"> Email:{" "}
-              <a
-                href={`mailto:${contactInfo.email}`}
-                className="hover:text-blue-400 transition"
-              >
-                <span className="font-normal">{contactInfo.email}</span>
-              </a></span>
+              <FaEnvelope className="text-blue-400" />
+              <span className="font-bold">
+                {" "}
+                Email:{" "}
+                <a
+                  href={`mailto:${contactInfo.email}`}
+                  className="hover:text-blue-400 transition"
+                >
+                  <span className="font-normal">{contactInfo.email}</span>
+                </a>
+              </span>
             </p>
             {contactInfo.addresses.map((address, i) => (
               <p key={i} className="flex items-center gap-2">
                 <FaMapMarkerAlt className="text-blue-400" />
-               <span className="font-bold"> {i === 0 ? "Head Office:  " : "Branch Office:  "} <span className="font-normal">{address}</span></span>
+                <span className="font-bold">
+                  {" "}
+                  {i === 0 ? "Head Office:  " : "Branch Office:  "}{" "}
+                  <span className="font-normal">{address}</span>
+                </span>
               </p>
             ))}
             <p className="flex items-center gap-2">
-              <FaClock className="text-blue-400" /> <span className="font-bold">
+              <FaClock className="text-blue-400" />{" "}
+              <span className="font-bold">
                 Business Hours:{" "}
-              <span className="font-normal">{contactInfo.businessHours}</span>
+                <span className="font-normal">{contactInfo.businessHours}</span>
               </span>
             </p>
           </div>
@@ -212,8 +225,8 @@ const handleSubmit = async (e) => {
                     <label
                       htmlFor={name}
                       className="absolute left-3 text-sm text-gray-400 transition-all duration-200 
-              peer-placeholder-shown:top-4 peer-placeholder-shown:text-base 
-              peer-focus:top-2 peer-focus:text-sm"
+                        peer-placeholder-shown:top-4 peer-placeholder-shown:text-base 
+                        peer-focus:top-2 peer-focus:text-sm"
                     >
                       {label}
                     </label>
@@ -237,8 +250,8 @@ const handleSubmit = async (e) => {
                     <label
                       htmlFor={name}
                       className="absolute left-3 text-sm text-gray-400 transition-all duration-200 
-              peer-placeholder-shown:top-4 peer-placeholder-shown:text-base 
-              peer-focus:top-2 peer-focus:text-sm"
+                        peer-placeholder-shown:top-4 peer-placeholder-shown:text-base 
+                        peer-focus:top-2 peer-focus:text-sm"
                     >
                       {label}
                     </label>
@@ -267,8 +280,8 @@ const handleSubmit = async (e) => {
               <label
                 htmlFor="message"
                 className="absolute left-3 text-sm text-gray-400 transition-all duration-200 
-        peer-placeholder-shown:top-4 peer-placeholder-shown:text-base 
-        peer-focus:top-2 peer-focus:text-sm"
+                  peer-placeholder-shown:top-4 peer-placeholder-shown:text-base 
+                  peer-focus:top-2 peer-focus:text-sm"
               >
                 Message
               </label>
@@ -285,6 +298,11 @@ const handleSubmit = async (e) => {
           </form>
         </motion.div>
       </div>
+
+      {/* Success Popup */}
+      {showPopup && (
+        <SuccessPopup show={showPopup} onClose={() => setShowPopup(false)} />
+      )}  
     </section>
   );
 };
