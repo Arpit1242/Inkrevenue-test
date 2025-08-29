@@ -31,7 +31,7 @@ const page = () => {
     e.preventDefault();
 
     const scriptURL =
-      "https://script.google.com/macros/s/AKfycbzkUXB0m557HBuFweM2o612fVuIPxomXBGeCqCobysgV0mckcj_hvF1sNRl0yI3EVlY/exec";
+      "https://script.google.com/macros/s/AKfycbyI_ZmPSYRObI9lY_MymXJIKija-_wZKA4isNosYpBlyY8AjDAUC5r1WjagnnCeg1Lw/exec";
 
     try {
       const form = new FormData();
